@@ -4,8 +4,10 @@ class Form extends Component {
     constructor(props) {
         super(props);
 
+        this.setUsername = this.setUsername.bind(this);
+
         this.state = {
-            username: true
+            username: ''
         };
     }
     componentDidMount() {
@@ -15,6 +17,7 @@ class Form extends Component {
             } = this.state;
 
             // do something with username and token
+            console.log('token', token);
         };
         window.recaptchaCallback = recaptchaCallback.bind(this);
     }
@@ -28,10 +31,10 @@ class Form extends Component {
             <div>
                 <form>
                     <label htmlFor='username'>Username</label>
-                    <input id='username' name='username' type='text' />
+                    <input id='username' name='username' type='text' onChange={this.setUsername} />
                     <button
                         className='g-recaptcha'
-                        data-sitekey='your-sitekey'
+                        data-sitekey='your-sitekey' // Wont work without a valid sitekey
                         data-callback='recaptchaCallback'
                         data-badge='inline'
                     >
@@ -40,6 +43,12 @@ class Form extends Component {
                 </form>
             </div>
         );
+    }
+
+    setUsername(event) {
+      this.setState({
+        username: event.target.value
+      })
     }
 }
 

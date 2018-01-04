@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
-    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --open"
   },
   "repository": {
     "type": "git",
